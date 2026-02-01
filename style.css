@@ -1,0 +1,250 @@
+:root {
+        --primary: #6366f1;
+        --primary-dark: #4f46e5;
+        --primary-light: #818cf8;
+        --danger: #ef4444;
+        --danger-dark: #dc2626;
+        --bg-main: #f8fafc;
+        --bg-card: #ffffff;
+        --bg-input: #f1f5f9;
+        --text-primary: #0f172a;
+        --text-secondary: #64748b;
+        --border: #e2e8f0;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-md:
+          0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --shadow-lg:
+          0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 16px;
+        --spacing-xs: 8px;
+        --spacing-sm: 12px;
+        --spacing-md: 16px;
+        --spacing-lg: 24px;
+        --spacing-xl: 32px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+          "Ubuntu", "Cantarell", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: var(--spacing-xl) var(--spacing-md);
+        color: var(--text-primary);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .form {
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        box-shadow: var(--shadow-lg);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+      }
+
+      .input {
+        padding: var(--spacing-sm) var(--spacing-md);
+        border: 2px solid var(--border);
+        border-radius: var(--radius-md);
+        flex: 1;
+        font-size: 15px;
+        font-family: inherit;
+        color: var(--text-primary);
+        background: var(--bg-input);
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 500;
+      }
+
+      .input::placeholder {
+        color: var(--text-secondary);
+      }
+
+      .input:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: var(--bg-card);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .add {
+        border: none;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+        font-family: inherit;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: var(--shadow-md);
+        letter-spacing: 0.3px;
+      }
+
+      .add:hover {
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark) 0%,
+          var(--primary) 100%
+        );
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .add:active {
+        transform: translateY(0);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .tasks {
+        background: transparent;
+        margin-top: var(--spacing-lg);
+        border-radius: var(--radius-lg);
+        padding: 0;
+      }
+
+      .tasks .task {
+        background: var(--bg-card);
+        padding: var(--spacing-md) var(--spacing-lg);
+        border-radius: var(--radius-md);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: var(--shadow-md);
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--text-primary);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tasks .task::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: var(--primary);
+        transform: scaleY(0);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .tasks .task:hover::before {
+        transform: scaleY(1);
+      }
+
+      .tasks .task:not(:last-child) {
+        margin-bottom: var(--spacing-md);
+      }
+
+      .tasks .task:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(99, 102, 241, 0.05) 0%,
+          rgba(118, 75, 162, 0.05) 100%
+        );
+        transform: translateX(4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .tasks .task.done {
+        opacity: 0.6;
+        text-decoration: line-through;
+        background: var(--bg-input);
+        border-color: var(--border);
+      }
+
+      .tasks .task.done::before {
+        background: var(--text-secondary);
+      }
+
+      .tasks .task.done:hover {
+        opacity: 0.7;
+        transform: translateX(2px);
+      }
+
+      .tasks .task span {
+        font-weight: 600;
+        font-size: 11px;
+        background: linear-gradient(
+          135deg,
+          var(--danger) 0%,
+          var(--danger-dark) 100%
+        );
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: var(--shadow-sm);
+        border: none;
+      }
+
+      .tasks .task span:hover {
+        background: linear-gradient(
+          135deg,
+          var(--danger-dark) 0%,
+          var(--danger) 100%
+        );
+        transform: scale(1.05);
+        box-shadow: var(--shadow-md);
+      }
+
+      .tasks .task span:active {
+        transform: scale(0.98);
+      }
+
+      @media (max-width: 600px) {
+        :root {
+          --spacing-lg: 20px;
+          --spacing-xl: 24px;
+        }
+
+        .container {
+          max-width: 100%;
+        }
+
+        .form {
+          flex-direction: column;
+          gap: var(--spacing-md);
+        }
+
+        .input,
+        .add {
+          width: 100%;
+        }
+
+        .tasks .task {
+          padding: var(--spacing-sm) var(--spacing-md);
+        }
+      }
